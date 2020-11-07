@@ -23,7 +23,7 @@ public class StudentService {
         if (list.size() > 0) {
             students.remove(list.get(0));
         } else {
-            throw new StudentException("student id did not exsit");
+            throw new StudentException("student id did not exist");
         }
     }
 
@@ -36,6 +36,15 @@ public class StudentService {
             return students;
         } else {
             return students.stream().filter(student -> student.getGender().equals(gender)).collect(Collectors.toList());
+        }
+    }
+
+    public StudentEntity getStudentById(Integer id) throws StudentException {
+        List<StudentEntity> list = students.stream().filter(item -> item.getId() == id).collect(Collectors.toList());
+        if (list.size() > 0) {
+            return list.get(0);
+        } else {
+            throw new StudentException("student id did not exist");
         }
     }
 }

@@ -36,4 +36,10 @@ public class StudentController {
     public List<StudentEntity> getStudents(@PathParam(value = "gender") String gender){
         return studentService.getStudents(gender);
     }
+
+    @GetMapping("{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public StudentEntity getStudent(@PathVariable Integer id) throws StudentException {
+        return studentService.getStudentById(id);
+    }
 }
