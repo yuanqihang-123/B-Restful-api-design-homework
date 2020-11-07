@@ -42,4 +42,10 @@ public class StudentController {
     public StudentEntity getStudent(@PathVariable Integer id) throws StudentException {
         return studentService.getStudentById(id);
     }
+
+    @PutMapping("{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public StudentEntity updateStudent(@PathVariable Integer id,@RequestBody StudentEntity studentEntity) throws StudentException {
+        return studentService.updateStudent(id,studentEntity);
+    }
 }

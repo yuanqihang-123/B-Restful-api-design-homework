@@ -1,0 +1,12 @@
+PUT http://localhost:8080/students/1
+Content-Type: application/json
+Cache-Control: no-cache
+
+{
+  "name": "new name",
+  "gender": "女",
+  "note": "new note"
+}
+
+###
+

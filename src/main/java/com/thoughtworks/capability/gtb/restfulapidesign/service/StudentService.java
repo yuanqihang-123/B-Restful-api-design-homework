@@ -13,7 +13,7 @@ public class StudentService {
     private List<StudentEntity> students = new LinkedList<>();
 
     public StudentEntity addStudent(StudentEntity studentEntity) {
-        studentEntity.setId(getIdFormList());
+        studentEntity.setId(getMaxId());
         students.add(studentEntity);
         return studentEntity;
     }
@@ -27,8 +27,13 @@ public class StudentService {
         }
     }
 
-    private Integer getIdFormList() {
-        return students.size() > 0 ? students.get(students.size() - 1).getId() + 1 : 0;
+    private Integer getMaxId() {
+        if (students.size() == 0) return 0;
+        Integer maxId = 0;
+        for (StudentEntity student : students) {
+            if (student.getId()>maxId)maxId = student.getId();
+        }
+        return maxId + 1;
     }
 
     public List<StudentEntity> getStudents(String gender) {
@@ -46,5 +51,15 @@ public class StudentService {
         } else {
             throw new StudentException("student id did not exist");
         }
+    }
+
+    public StudentEntity updateStudent(Integer id, StudentEntity studentEntity) throws StudentException {
+        StudentEntity stu = getStudentById(id);
+        students.remove(stu);
+        stu.setGender(studentEntity.getGender());
+        stu.setName(studentEntity.getName());
+        stu.setNote(studentEntity.getNote());
+        students.add(stu);
+        return stu;
     }
 }
