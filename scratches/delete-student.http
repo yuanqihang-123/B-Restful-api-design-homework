@@ -1,0 +1,15 @@
+DELETE http://localhost:8080/students/1
+Content-Type: application/json
+Cache-Control: no-cache
+
+
+<> 2020-11-07T024248.200.json
+<> 2020-11-07T024038.200.json
+<> 2020-11-07T023946.200.json
+<> 2020-11-07T023803.200.json
+<> 2020-11-07T023707.200.json
+<> 2020-11-07T022356.500.json
+<> 2020-11-07T022258.500.json
+
+###
+

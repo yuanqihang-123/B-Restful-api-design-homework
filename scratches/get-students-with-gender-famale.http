@@ -1,0 +1,10 @@
+GET http://localhost:8080/students?gender=女
+Content-Type: application/json
+Cache-Control: no-cache
+
+<> 2020-11-07T030521.200.json
+<> 2020-11-07T030405.200.json
+<> 2020-11-07T030317.200.json
+
+###
+

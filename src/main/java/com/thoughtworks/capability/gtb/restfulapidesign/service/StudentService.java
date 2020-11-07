@@ -20,14 +20,22 @@ public class StudentService {
 
     public void deleteStudent(Integer studentId) throws StudentException {
         List<StudentEntity> list = students.stream().filter(item -> item.getId() == studentId).collect(Collectors.toList());
-        if (list.size()>0){
+        if (list.size() > 0) {
             students.remove(list.get(0));
-        }else {
+        } else {
             throw new StudentException("student id did not exsit");
         }
     }
 
     private Integer getIdFormList() {
         return students.size() > 0 ? students.get(students.size() - 1).getId() + 1 : 0;
+    }
+
+    public List<StudentEntity> getStudents(String gender) {
+        if (gender == null) {
+            return students;
+        } else {
+            return students.stream().filter(student -> student.getGender().equals(gender)).collect(Collectors.toList());
+        }
     }
 }
