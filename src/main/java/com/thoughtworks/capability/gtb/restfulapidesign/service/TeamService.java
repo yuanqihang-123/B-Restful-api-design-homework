@@ -9,9 +9,10 @@ import java.util.List;
 
 @Service
 public class TeamService {
+    private List<TeamEntity> teams = new LinkedList<TeamEntity>();
 
     public List<TeamEntity> getRegroupTeams() {
-        List<TeamEntity> teams = createTeams(6);
+        teams = createTeams(6);
         for (int i = 0; i < StudentService.students.size(); i++) {
             teams.get(i%6).getStudents().add(StudentService.students.get(i));
         }
