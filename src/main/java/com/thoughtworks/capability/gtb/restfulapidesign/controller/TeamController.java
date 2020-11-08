@@ -3,10 +3,7 @@ package com.thoughtworks.capability.gtb.restfulapidesign.controller;
 import com.thoughtworks.capability.gtb.restfulapidesign.entity.TeamEntity;
 import com.thoughtworks.capability.gtb.restfulapidesign.service.TeamService;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,6 +27,12 @@ public class TeamController {
     @ResponseStatus(HttpStatus.OK)
     public List<TeamEntity> getRegroupTeams() {
         return teamService.getRegroupTeams();
+    }
+
+    @PatchMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public TeamEntity updateTeamName(@PathVariable Integer id, @RequestBody String name){
+        return teamService.updateTeamNameById(id, name);
     }
 
 }

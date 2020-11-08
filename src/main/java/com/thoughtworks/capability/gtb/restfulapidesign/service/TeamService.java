@@ -13,8 +13,9 @@ public class TeamService {
     private List<TeamEntity> teams = createTeams(6);
 
     public List<TeamEntity> getRegroupTeams() {
+        cleanTeams();
         for (int i = 0; i < StudentService.students.size(); i++) {
-            teams.get(i%6).getStudents().add(StudentService.students.get(i));
+            teams.get(i % 6).getStudents().add(StudentService.students.get(i));
         }
         return teams;
     }
@@ -23,12 +24,24 @@ public class TeamService {
         return teams;
     }
 
-    private List<TeamEntity> createTeams(int count){
+    public TeamEntity updateTeamNameById(Integer id, String name) {
+        TeamEntity team = teams.get(id-1);
+        team.setName(name);
+        return team;
+    }
+
+    private List<TeamEntity> createTeams(int count) {
         LinkedList<TeamEntity> teamEntities = new LinkedList<>();
         for (int i = 1; i <= count; i++) {
-            teamEntities.add(new TeamEntity(i, "组 " + i, "组 " + i+" 备注", new LinkedList<StudentEntity>()));
+            teamEntities.add(new TeamEntity(i, "组 " + i, "组 " + i + " 备注", new LinkedList<StudentEntity>()));
         }
         return teamEntities;
     }
 
+
+    public void cleanTeams() {
+        for (int i = 0; i < teams.size(); i++) {
+            teams.get(i).setStudents(new LinkedList<StudentEntity>());
+        }
+    }
 }

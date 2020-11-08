@@ -1,0 +1,10 @@
+PATCH http://localhost:8080/groups/1
+Content-Type: application/json
+Cache-Control: no-cache
+
+
+new name
+
+
+###
+
