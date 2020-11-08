@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class StudentService {
-    private List<StudentEntity> students = new LinkedList<>();
+    public static List<StudentEntity> students = new LinkedList<>();
 
     public StudentEntity addStudent(StudentEntity studentEntity) {
         studentEntity.setId(getMaxId());
